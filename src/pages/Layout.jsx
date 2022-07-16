@@ -1,5 +1,8 @@
 import React, { Fragment, useContext } from 'react';
 import { Context } from '../context/Context';
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import Theme from '../../theme';
 import RoutesCustom from '../routes/RoutesCustom';
 import Login from './Login';
 
@@ -8,7 +11,8 @@ const Layout = () => {
     const user = checkUser().userId;
 
     return (
-        <Fragment>
+        <ThemeProvider theme={Theme().theme}>
+        <CssBaseline />
             {(user !== null) ? 
                 <Fragment>
                     <RoutesCustom />
@@ -18,7 +22,7 @@ const Layout = () => {
                     <Login />
                 </Fragment>
             }
-        </Fragment>
+        </ThemeProvider>
     )
 }
 
